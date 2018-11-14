@@ -1,0 +1,16 @@
+<ion-view>
+    <ion-content>
+        <h1 style="text-align: center;">Solutions</h1>
+        <ion-list ng-repeat='item in questions'>
+            <pre class='item item-divider'>{{item.question}}</pre>
+            <ion-item class="item {{getSolutionClass(item,option)}}" ng-repeat='option in item.options'>{{option.value|uppercase}}). {{option.label}}</ion-item>
+            <ion-item >
+                Answer: {{item.answer|uppercase}}
+            </ion-item>
+            <br>
+            <br>
+        </ion-list>
+        
+        <button ng-click="nextLevel()" class="button button-dark button-block button-outline">Next</button>
+    </ion-content>
+</ion-view>

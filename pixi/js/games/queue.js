@@ -110,6 +110,12 @@ class QueueGame extends GameType{
         if(box.y>movingBoxDirection.y) box.y-=speed;
     }
     setup(){
+        let background=new GameObject(this.game.getTexture('queue_background'))
+        background.y=0;
+        background.x=0;
+        background.width=this.game.width
+        background.height=this.game.height
+        this.game.addSprite(background)
         this.initRoad()
         this.newPeopleCount=this.level*3
         this.maxPeopleCount=this.newPeopleCount;

@@ -1,0 +1,20 @@
+pre.item{
+	overflow: unset !important;
+    text-overflow: unset !important;
+    white-space: pre-wrap !important;
+    background-color: silver;
+    color: white;
+}
+.item-error{
+	background-color: #f55;
+	color: white;
+}
+.item-success{
+	background-color: #5f5;
+	color: white;
+}
+.item-wrap{
+	overflow: unset !important;
+    text-overflow: unset !important;
+    white-space: pre-wrap !important;
+}

@@ -21,6 +21,9 @@
     </style>
 </head>
 <body>
+    <script type="text/javascript">
+        window.console.log=function(){} 
+    </script>
     <script src="js/pixi.js"></script>
     <script src="js/games/GameType.js"></script>
     <script src="js/games/stack.js"></script>
@@ -33,7 +36,6 @@
     game.ready(()=>{
         document.body.appendChild(game.view)
         game.showGame(QueueGame,1)
-        //game.showGame(StackGame,1)
         //game.stopGame()
     })
     

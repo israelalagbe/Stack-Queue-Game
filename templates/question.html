@@ -1,0 +1,11 @@
+<ion-view>
+    <ion-content>
+        <ion-list ng-repeat='item in questions'>
+            <pre class='item item-divider'>{{item.question}}</pre>
+            <ion-radio class='radio-content item-wrap' color='lightgrey' name='{{item.name}}' ng-model='item.choice' ng-repeat='option in item.options' ng-value="option.value">
+                {{option.value|uppercase}}). {{option.label}}
+            </ion-radio>
+        </ion-list>
+        <button ng-click="submit()" class="button button-dark button-block button-outline">Submit</button>
+    </ion-content>
+</ion-view>

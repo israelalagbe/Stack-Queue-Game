@@ -20,8 +20,9 @@ class StackGame extends GameType{
         /**
          * @type GameObject[]
          */
-        this.enemies=[]
+        this.allGameObjects=[]
         this.activeBox=null
+        this.showGameOverAnimation=false
 
     
     } 
@@ -47,6 +48,18 @@ class StackGame extends GameType{
         if(box.x===movingBoxDirection.x&&box.y===movingBoxDirection.y) return true
         return false
     }
+    updateGameOverAnimations(){
+        let numDoneAnimation=0
+        for (let box of this.allGameObjects) {
+            box.y+=Math.random()
+            if (box.y>this.game.height+30) {
+                numDoneAnimation+=1
+            }
+        }
+        if (numDoneAnimation>=this.allGameObjects.length) {
+            this.onWin()
+        }
+    }
      /**
      * 
      * @param {number} delta The time since the last update
@@ -57,9 +70,14 @@ class StackGame extends GameType{
        /* this.cat.anchor.set(0.5,0.5)
        this.cat.rotation+=0.1 */
        //this.cat.update(delta)
+       if (this.showGameOverAnimation) {
+        this.updateGameOverAnimations()
+        //this.onWin()
+        return;
+       }
        let b=this.boxes.length
        if(this.freshBoxes===0&&!this.activeBox){
-           this.onWin()
+           this.showGameOverAnimation=true
        }
        if(this.activeBox){
            let box=this.activeBox;
@@ -128,6 +146,12 @@ class StackGame extends GameType{
         return box
     }
     setup(){
+        let background=new GameObject(this.game.getTexture('stack_background'))
+        background.y=0;
+        background.x=0;
+        background.width=this.game.width
+        background.height=this.game.height
+        this.game.addSprite(background)
         
         this.jar=new GameObject(this.game.getTexture('jar'))
         this.jar.visible=false
@@ -170,6 +194,7 @@ class StackGame extends GameType{
             this.boxes.push(box)
             this.game.addSprite(box);
         }
+        this.allGameObjects=[...this.boxes]
         //Removes the topmost box
         this.boxes.pop()
         this.resetMovingBoxDirection()
@@ -207,6 +232,6 @@ class StackGame extends GameType{
         super.play(onStart,onWin,onGameOver)
         this.setup()
         this.onStart()
-        alert("Move the stack to the other side by clicking on the boxes, and avoid the fire")
+        //alert("Move the stack to the other side by clicking on the boxes, and avoid the fire")
     }
 }

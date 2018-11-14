@@ -11,14 +11,16 @@ const AssetConstants={
     "pebble":"asset/crate.png",
     "jar":"asset/jar.jpg",
     "fire":"asset/sprite_fire.png",
-    "person":"asset/old_woman.png",
+    "person":"asset/old_woman copy.png",
     "road":"asset/road.png",
     "abulance":"asset/abulance.png",
     "viper":"asset/Black_viper.png",
     "truck":"asset/Mini_truck.png",
-    "taxi":"asset/taxi.png"
-};
-
+    "taxi":"asset/taxi.png",
+    'stack_background':"asset/black_smith.jpg",
+    'queue_background':"asset/field.jpg",
+    "home_background":"home_background.jpg"
+}
 class Game {
 
     constructor() {
@@ -103,7 +105,7 @@ class Game {
         this.onReady=cb;
         if(this.gameReady) this.onReady();
     }
-    showGame(gameClass,level){
+    showGame(gameClass,level,onWin,onLose){
         this.gameType=new gameClass(this,level)
         this.gameType.play(()=>{
             this.app.ticker.add(this.gameType.update)
@@ -112,20 +114,20 @@ class Game {
         },()=>{
             //On win
             this.stopGame()
-            
-            setTimeout(()=>{
-                alert("You Won")
-                this.showGame(gameClass,++level)
-            },1000)
+            onWin()
+            // setTimeout(()=>{
+            //     alert("You Won")
+            //     this.showGame(gameClass,++level)
+            // },1000)
             
             //this.stopGame()
         },()=>{
             //On Lose
             this.stopGame()
-            
-            if(confirm("You Lose, do you want to play again?")){
-                this.showGame(gameClass,1)
-            }
+            onLose()
+            // if(confirm("You Lose, do you want to play again?")){
+            //     this.showGame(gameClass,1)
+            // }
             
          
             
