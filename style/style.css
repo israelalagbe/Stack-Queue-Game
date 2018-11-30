@@ -1,20 +1,67 @@
-pre.item{
-	overflow: unset !important;
-    text-overflow: unset !important;
-    white-space: pre-wrap !important;
-    background-color: silver;
-    color: white;
+pre.item {
+  overflow: unset !important;
+  text-overflow: unset !important;
+  white-space: pre-wrap !important;
+  background-color: silver;
+  color: white;
 }
-.item-error{
-	background-color: #f55;
-	color: white;
+.item-error {
+  background-color: #f55;
+  color: white;
 }
-.item-success{
-	background-color: #5f5;
-	color: white;
+.item-success {
+  background-color: #5f5;
+  color: white;
 }
-.item-wrap{
-	overflow: unset !important;
-    text-overflow: unset !important;
-    white-space: pre-wrap !important;
+.item-wrap {
+  overflow: unset !important;
+  text-overflow: unset !important;
+  white-space: pre-wrap !important;
+}
+
+.home-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.queue-button {
+  background: url(/asset/Queuebtn.PNG);
+  background-size: 100% 100%;
+  height: 100px;
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+.stack-button {
+  background: url(/asset/Stackbtn.PNG);
+  background-size: 100% 100%;
+  height: 100px;
+  width: 90%;
+}
+
+
+canvas {
+    width: 100%;
+    height: 100%;
+}
+
+main{
+    max-width: 800px;
+}
+
+body,
+html,
+main,
+#game, ion-view  {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.screen {
+    max-width: 700px;
+    margin: auto;
 }
